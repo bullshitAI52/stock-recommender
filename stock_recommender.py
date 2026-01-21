@@ -293,11 +293,11 @@ def recommend_stocks():
     final_combine_mask = dynamic_combo_mask | history_mask
      
     # 应用最佳组合，推荐5只（按换手率降序）
-    recommended = first_board[final_combine_mask].sort_values(by='换手率', ascending=False).head(5)
+    recommended = first_board[final_combine_mask].sort_values(by='换手率', ascending=False).head(5).copy()
      
     # 如果少于5，补充top换手率首板股
     if len(recommended) < 5:
-        additional = first_board[~first_board['代码'].isin(recommended['代码'])].sort_values(by='换手率', ascending=False).head(5 - len(recommended))
+        additional = first_board[~first_board['代码'].isin(recommended['代码'])].sort_values(by='换手率', ascending=False).head(5 - len(recommended)).copy()
         recommended = pd.concat([recommended, additional])
      
     # ===== 推荐股票展示（含风险评级）=====
