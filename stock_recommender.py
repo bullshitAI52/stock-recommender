@@ -77,7 +77,7 @@ def analyze_historical_prob(date_start='20240101', date_end=None):
         cond = get_strategy_mask(historical_zt, name)
         if cond is None: continue
         
-        subset = historical_zt[historical_zt['is_first_board'] & cond]
+        subset = historical_zt[historical_zt['is_first_board'] & cond].copy()
         if len(subset) > 0:
             prob = subset['next_day_zt'].mean()
             if prob > max_prob:
