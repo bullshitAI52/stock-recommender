@@ -166,7 +166,7 @@ pip3 install -r requirements.txt
 
 ## 📄 许可证
 
-MIT License
+PolyForm Noncommercial License 1.0.0（非商业许可）
 
 ## 🤝 贡献
 
